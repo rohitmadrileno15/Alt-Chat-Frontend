@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta name="viewport" content="width=device-width" />
-    
+    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials">
     
     <title>Alt-Chat</title>
 
@@ -248,7 +249,7 @@
             console.log(client_id)
             document.querySelector("#ws-id").textContent = client_id;
             document.querySelector("#rm-id").textContent = room;
-            var ws = new WebSocket(`wss://alt-chat-fastapi.herokuapp.com/ws/${room}/${client_id}`);
+            var ws = new WebSocket(`ws://alt-chat-fastapi.herokuapp.com/ws/${room}/${client_id}`);
             ws.onmessage = function(event) {
                 var messages = document.getElementById('messages')
                 var message = document.createElement('li')

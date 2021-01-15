@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta name="viewport" content="width=device-width" />
-
+    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/app.webmanifest" crossorigin="use-credentials">
         <meta name = "keywords" content = "CHATTING , ALt-Chat" />
       <meta name = "description" content = "The Chat App that doesn't peek into your data!" />
 
@@ -182,6 +183,28 @@ let fetchRes = fetch(
 
  
 </script>
+
+
+<script> 
+	window.addEventListener('load', () => { 
+	registerSW(); 
+	}); 
+
+	// Register the Service Worker 
+	async function registerSW() { 
+	if ('serviceWorker' in navigator) { 
+		try { 
+		await navigator 
+				.serviceWorker 
+				.register('sw.js'); 
+		} 
+		catch (e) { 
+		console.log('SW registration failed'); 
+		} 
+	} 
+	} 
+</script>
+
   <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
 </body>
 </html>

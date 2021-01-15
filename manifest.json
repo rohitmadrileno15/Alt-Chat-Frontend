@@ -1,0 +1,21 @@
+{
+    "name" :"AltChat" ,
+    "short_name" : "AltChat",
+    "start_url" : "./index.html" ,
+    "description": "The ChatApp that doesnt peeks on your data",
+    "background_color": "#fff" , 
+    "theme_color" : "#009578" ,
+    "display" : "standalone",
+    "icons" : [
+
+        {
+            "src": "images/alt1.png",
+            "sizes": "72x72" 
+    
+          }, 
+        {
+            "src": "images/alt2.png",
+            "sizes" :  "256x256"  
+        }
+    ]
+}
