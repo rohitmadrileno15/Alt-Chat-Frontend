@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="viewport" content="width=device-width" />
+    
+    
+    <title>Alt-Chat</title>
+
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
+    
+    </head>
+
+    <style>
+    #messages>li{
+        border-radius: 10px;
+        border: 1px solid salmon;
+        padding: 10px;
+        list-style: none;
+    }
+
+    .footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(41, 37, 37);
+        color: white;
+        text-align: center;
+        padding: 20px;
+     }
+
+ 
+</style>
+    <body onload="halfmoon.toggleDarkMode()" class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+
+        <nav class="navbar">
+            <!-- Navbar brand -->
+            <a href="index.html" class="navbar-brand">
+              Alt Chat 
+            </a>
+            <!-- Navbar text -->
+            <span class="navbar-text ml-5"> <!-- ml-5 = margin-left: 0.5rem (5px) -->
+              <span class="badge text-monospace">v1.0</span> <!-- text-monospace = font-family shifted to monospace -->
+            </span>
+            <!-- Navbar nav -->
+            <ul class="navbar-nav ml-auto"> <!-- ml-auto = margin-left: auto -->
+              <li class="nav-item active">
+                <a href="#" class="nav-link" onclick="toggleDemo()">
+                    <i class='fas fa-cloud-moon' style='font-size:24px'></i>
+                </a>
+              </li>
+              <li class="nav-item dropdown with-arrow">
+                <a class="nav-link" data-toggle="dropdown" id="nav-link-dropdown-toggle">
+                  Know More
+                  <i class="fa fa-angle-down ml-5" aria-hidden="true"></i> <!-- ml-5= margin-left: 0.5rem (5px) -->
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nav-link-dropdown-toggle">
+                  <a href="#modal-3" class="dropdown-item">About</a>
+                  <a href="https://rohitsaha.netlify.app/" class="dropdown-item">
+                    Developer
+                    <strong class="badge badge-success float-right">info</strong> <!-- float-right = float: right -->
+                  </a>
+               
+                </div>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="modal ie-scroll-fix" id="modal-3" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content w-600">  
+                <a href="#" class="close" role="button" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </a>
+                
+              <details class="collapse-panel w-400 mw-full"> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                <summary class="collapse-header">
+                  What is Alt-Chat?
+                </summary>
+                <div class="collapse-content">
+                  Just another Chatting Application, where we don't store your data but protect it during your communication.
+
+                </div>
+              </details>
+
+              
+              <details class="collapse-panel w-400 mw-full mt-20" open> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+                <summary class="collapse-header">
+                  How can you use it?
+                </summary>
+                <div class="collapse-content">
+                    It's easy. You don't even have to sign up.
+                    <br>
+                    1. <code class="code">Enter your Display name (could be any name)</code>
+                    <br>
+                    2. <code class="code">Enter any exisiting session or room Id , or you can make your own room and share it with your friends.</code>
+                    <br>3. <code class="code">Voila! Now you can chat without anyone peeking!</code>
+                </div>
+
+              </details>
+
+              <details class="collapse-panel w-400 mw-full mt-20"> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+                <summary class="collapse-header">
+                 Things to keep in mind!
+                </summary>
+                <div class="collapse-content">
+
+          
+                    The communication lines i.e, rooms are open, so anyone can join! So, Choose your Room Ids just like your secrets codes.
+                </div>
+
+              </details>
+              
+              <br>
+              <div class="container">
+                <span class="text-monospace">DEV</span>
+                <span class="badge badge-success text-monospace">Rohit Saha</span>
+                 
+ 
+              </div>
+              
+            </div>
+            </div>
+          </div>
+
+          <br>
+          <div class="sticky-alerts"></div>
+            
+
+     
+          
+    <div id="main-block" class="container">
+          <div class="container-fluid" >
+
+            <div class="row  justify-content-center">
+                <div class="col-8">
+                    <h2 style="font-size: 24px;">Alt-Chat Session <i class='fas fa-comment-dots'  ></i></h2>
+                    <hr>
+                    
+                    <span class="badge-group" role="group" aria-label="Badge group example">
+                      <span id="ws-id" class="badge"></span>
+                      <span id="rm-id" class="badge badge-primary"></span>
+                      <span  id="copy-id" style="padding-right: 8px;" class="badge badge-secondary badge-pill"><i class='fas fa-clipboard'></i></span>
+                      
+                    </span>
+                      
+                    <hr>
+                    
+                    <span class="" id="room-users">
+
+                    </span>
+                    &nbsp;
+                    <button class="btn" onclick="reload_users( document.getElementById('rm-id').innerText)" style="padding: 4px;">
+                      <i class='fas fa-sync-alt' style='font-size:24px'></i>
+                    </button>
+                     
+                    <hr>
+                    
+
+                </div>
+            </div>
+   
+        </div>
+
+ 
+          
+        <div style="overflow-y: scroll; height:300px;" class="row  justify-content-center">
+            <br>
+           
+          <br>
+            <ul class="col-8" id="messages">
+
+            </ul>
+            <br>
+        </div>
+        <br>
+        <br>
+
+
+        <div class="footer">
+
+            <div class="container-fluid">
+                <div class="row  justify-content-center ">
+                    <div class="col-6">
+
+                        <form action="" class="form-inline" onsubmit="sendMessage(event)">
+                            <input class="form-control" placeholder="Type in message..." required type="text" id="messageText" autocomplete="off"/>
+                            <button type="submit" class="btn btn-success"><i class='fas fa-paper-plane'></i></button>
+                        </form>
+
+                      
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        </div>
+        <script>
+
+            function toggleDemo() {
+                halfmoon.toggleDarkMode();
+              }
+
+              document.getElementById("copy-id").onclick = function() {
+                let text = document.getElementById("rm-id").innerText;
+                copyTextToClipboard(text);
+              }
+            async function copyTextToClipboard(text) {
+              try {
+                await navigator.clipboard.writeText(text);
+
+                halfmoon.initStickyAlert({
+                  content: "",
+                  title: "Session Id copied!",
+                  alertType: "alert-secondary",
+                  fillType: "filled-lm"
+                });
+     
+              } catch(err) {
+                halfmoon.initStickyAlert({
+                  content: "",
+                  title: "Oops! Couldn't Copy",
+                  alertType: "alert-danger",
+                  fillType: "filled-lm"
+                });
+             
+              }
+            }
+          
+        
+            var person = prompt("Enter your display name")
+            var room = prompt("Enter existing Session ID or type in a new one");
+
+            
+            var client_id = person;
+            var client_room = room;
+              if(client_id == null || client_room == null) {
+                alert("Please Add both the fields...");
+                window.location.reload(false); 
+              }
+            console.log(client_id)
+            document.querySelector("#ws-id").textContent = client_id;
+            document.querySelector("#rm-id").textContent = room;
+            var ws = new WebSocket(`ws://alt-chat-fastapi.herokuapp.com/ws/${room}/${client_id}`);
+            ws.onmessage = function(event) {
+                var messages = document.getElementById('messages')
+                var message = document.createElement('li')
+
+
+                var x_name = document.createElement("SPAN");
+                if(JSON.parse(event.data).id === "") {
+                  x_name.className = "badge badge-secondary";
+                  var t = document.createTextNode("( ͡❛ ͜ʖ ͡❛)");
+                  toastSuccessAlert( 
+                    JSON.parse(event.data).msg
+                  )
+                }
+                else{
+                  x_name.className = "badge badge-primary";          
+                  var t = document.createTextNode(JSON.parse(event.data).id);
+
+                }
+
+
+                x_name.appendChild(t);
+                message.appendChild(x_name)
+               
+                var x_msg = document.createElement("SPAN");
+                if( JSON.parse(event.data).id === "" ){
+                  x_msg.style.color = "	#31f756"
+                }
+                x_msg.style.padding = "3px"
+                x_msg.style.fontSize = "medium"
+
+                var content = document.createTextNode(JSON.parse(event.data).msg) 
+                x_msg.appendChild(content)
+                message.appendChild(x_msg)
+                messages.appendChild(message)
+            };
+            function sendMessage(event) {
+                var input = document.getElementById("messageText")
+                ws.send(input.value)
+                input.value = ''
+                event.preventDefault()
+            }
+
+
+            function toastSuccessAlert( msg ) {
+              halfmoon.initStickyAlert({
+                content: msg,
+                title: "Alright...",
+                alertType: "alert-success",
+                fillType: "filled-lm"
+              });
+            }
+
+              function reload_users( room ){
+                let fetchRes = fetch( 
+                  "https://alt-chat-fastapi.herokuapp.com/room_active/" + room); 
+                
+               
+                     fetchRes.then(res => 
+                          res.json()).then(d => { 
+               
+                              document.getElementById("room-users").innerText = d.msg;
+                              document.getElementById("room-users").innerText += " user(s) are Chatting right now!";
+                        
+                              console.log(d) 
+                          }) 
+              
+          }
+
+
+        </script>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+    </body>
+</html>

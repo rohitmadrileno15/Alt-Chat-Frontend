@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width" />
+
+        <meta name = "keywords" content = "CHATTING , ALt-Chat" />
+      <meta name = "description" content = "The Chat App that doesn't peek into your data!" />
+
+ 
+  <title>Alt-Chat</title>
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
+ 
+</head>
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-mode-onload="true">
+  <!-- Navbar with a navbar-item as dropdown -->
+<nav class="navbar">
+    <!-- Navbar brand -->
+    <a href="#" class="navbar-brand">
+      Alt Chat
+    </a>
+    <!-- Navbar text -->
+    <span class="navbar-text ml-5"> <!-- ml-5 = margin-left: 0.5rem (5px) -->
+      <span class="badge text-monospace">v1.0</span> <!-- text-monospace = font-family shifted to monospace -->
+    </span>
+    <!-- Navbar nav -->
+    <ul class="navbar-nav ml-auto"> <!-- ml-auto = margin-left: auto -->
+      <li class="nav-item active">
+        <a href="#" class="nav-link" onclick="toggleDemo()">
+            <i class='fas fa-cloud-moon' style='font-size:24px'></i>
+        </a>
+      </li>
+      <li class="nav-item dropdown with-arrow">
+        <a class="nav-link" data-toggle="dropdown" id="nav-link-dropdown-toggle">
+          Know More
+          <i class="fa fa-angle-down ml-5" aria-hidden="true"></i> <!-- ml-5= margin-left: 0.5rem (5px) -->
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nav-link-dropdown-toggle">
+          <a href="#modal-3" class="dropdown-item">About</a>
+          <a href="#" class="dropdown-item">
+            Developer
+            <strong class="badge badge-success float-right">info</strong> <!-- float-right = float: right -->
+          </a>
+       
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+ 
+
+<div class="modal ie-scroll-fix" id="modal-3" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content w-600">  
+                <a href="#" class="close" role="button" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </a>
+                
+              <details class="collapse-panel w-400 mw-full"> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
+                <summary class="collapse-header">
+                  What is Alt-Chat?
+                </summary>
+                <div class="collapse-content">
+                  Just another Chatting Application, where we don't store your data but protect it during your communication.
+
+                </div>
+              </details>
+
+              
+              <details class="collapse-panel w-400 mw-full mt-20" open> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+                <summary class="collapse-header">
+                  How can you use it?
+                </summary>
+                <div class="collapse-content">
+                    It's easy. You don't even have to sign up.
+                    <br>
+                    1. <code class="code">Enter your Display name (could be any name)</code>
+                    <br>
+                    2. <code class="code">Enter any exisiting session or room Id , or you can make your own room and share it with your friends.</code>
+                    <br>3. <code class="code">Voila! Now you can chat without anyone peeking!</code>
+                </div>
+
+              </details>
+
+              <details class="collapse-panel w-400 mw-full mt-20"> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+                <summary class="collapse-header">
+                 Things to keep in mind!
+                </summary>
+                <div class="collapse-content">
+
+          
+                    The communication lines i.e, rooms are open, so anyone can join! So, Choose your Room Ids just like your secrets codes.
+                </div>
+
+              </details>
+              
+              <br>
+              <div class="container">
+                <span class="text-monospace">DEV</span>
+                <span class="badge badge-success text-monospace">
+                <a style="color:#000" href="https://rohitsaha.netlify.app">Rohit Saha
+                </a>
+                </span>
+                 
+ 
+              </div>
+              
+            </div>
+            </div>
+          </div>
+  <div class="container-fluid" style="padding: 20px; margin-top:30px">
+  
+    <div class="row">
+      <div class="col-8 text-left ">
+        <!-- Content -->
+            <div class="content" >
+                <h2 class="content-title" style="font-size:30px;">
+                Shh. It's private in here...
+                </h2>
+                <p style="font-size:20px;">
+                    A hush-hush in the chatting application world makes us enter in here.
+                   <br>Try <strong class="badge badge-secondary">Alt-Chat</strong> , an alternative minimalistic chatting Application. 
+                </p>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-auto"><a href="#modal-3" class="btn btn-rounded  btn-primary" type="button">Know More</a></div>
+                        <div class="col-auto">&nbsp; <a href="extra.html" style="font-weight:bold;" class="btn btn-success" type="button">Join Chat</a></div>
+                        
+                      </div>
+
+                      <p id="active-users" style="font-size:20px; font-style:italic">
+                         
+                      </p>
+                      
+                </div>
+
+            </div>
+      </div>
+      <div class="col-4 text-center" style="padding-right:10px">
+        <img src="https://res.cloudinary.com/dlxxe3zdi/image/upload/v1610722996/ALT_nzwxng.png" class="img-fluid" alt="responsive image"/>
+      </div>
+    </div>
+  
+  </div>
+  
+ 
+  
+
+
+
+<script type="text/javascript">
+  // Dark mode toggle demo
+  function toggleDemo() {
+    halfmoon.toggleDarkMode();
+  }
+
+
+
+let fetchRes = fetch( 
+"https://alt-chat-fastapi.herokuapp.com/total_active_users"); 
+  
+ 
+        fetchRes.then(res => 
+            res.json()).then(d => { 
+
+              if(d.msg == "0"){
+                document.getElementById("active-users").innerText = "A lot of people are using right now, where are you?";  
+              }
+              else{
+                document.getElementById("active-users").innerText = d.msg;
+                document.getElementById("active-users").innerText += " user(s) are Chatting right now!";
+              }
+
+                console.log(d) 
+            }) 
+
+ 
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+</body>
+</html>
